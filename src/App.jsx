@@ -30,7 +30,7 @@ function App() {
     <div className="container">
       <h1 className="heading">Olympics Data from JSON</h1>
       <div className="category">
-        <h2 className="names" onClick={() => setShowNames(!showNames)}>Names</h2>
+        <button className="names" onClick={() => setShowNames(!showNames)}>Names</button>
         {showNames && (
           <ul>
             {names.map((name, index) => (
@@ -40,7 +40,7 @@ function App() {
         )}
       </div>
       <div className="category">
-        <h2 className="years" onClick={() => setShowYears(!showYears)}>Years</h2>
+        <button className="years" onClick={() => setShowYears(!showYears)}>Years</button>
         {showYears && (
           <ul>
             {years.map((year, index) => (
@@ -50,7 +50,7 @@ function App() {
         )}
       </div>
       <div className="category">
-        <h2 className="medals" onClick={() => setShowMedals(!showMedals)}>Medals</h2>
+        <button className="medals" onClick={() => setShowMedals(!showMedals)}>Medals</button>
         {showMedals && (
           <ul>
             {medals.map((medal, index) => (
