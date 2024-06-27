@@ -1,61 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: white;
+}
+
 .container {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  font-style: normal;
-    padding: 20px;
-  }
-  
-  .heading {
-    text-align: center;
-    margin-bottom: 20px;
-    display: flex;
-  }
-  
-  .category {
-    margin-top: 30px;
-    display: inline-block;
-    padding-inline-start: 20px;
-    margin-left: 400px;
-    ;
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  }
-  
-  .category button {
-    margin-bottom: 10px;
-    cursor: pointer;
-    color: black;
-    font-weight: bold;
+.heading {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
 
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
 
-    
-  }
-  
-  .category ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .category li {
-    margin-bottom: 5px;
-  }
-  
-  .names {
-    border-radius: 10px;
-  
-  }
-  
-  .years {
-    background-color: green;
-    border-radius: 10px;
-  }
-  
-  .medals {
-    background-color: red;
-    border-radius: 10px;
-  }
-  
+.header-button-names{
+  background-color: #3498db;;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  color: white;
+}
 
-  .medals:hover, .years:hover, .names:hover{
-    transition: 0.8s;
-    opacity: 0.;
-  }
+.header-button-year{
+  background-color: #3498db;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.header-button-medals{
+  color: white;
+  background-color: #3498db;;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.header-button-medals:hover, .header-button-year:hover,.header-button-names:hover  {
+  background-color: #0056b3;
+  transition: 0.7s;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.data-table th {
+  background-color: #93aeb1;
+  font-weight: 600;
+}

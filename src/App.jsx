@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 import './style.css';
 
 function App() {
-  const [names, setNames] = useState([]);
-  const [years, setYears] = useState([]);
-  const [medals, setMedals] = useState([]);
+  const [data, setData] = useState([]);
   const [showNames, setShowNames] = useState(false); 
   const [showYears, setShowYears] = useState(false); 
   const [showMedals, setShowMedals] = useState(false); 
@@ -13,13 +11,7 @@ function App() {
     fetch('./gold_medalists.json')
       .then((res) => res.json())
       .then((data) => {
-        const names = data.map(item => item.Name);
-        const years = data.map(item => item.Year);
-        const medals = data.map(item => item.Medal);
-
-        setNames(names);
-        setYears(years);
-        setMedals(medals);
+        setData(data);
       })
       .catch((error) => {
         console.error('Erro ao carregar os dados: ', error);
@@ -29,36 +21,29 @@ function App() {
   return (
     <div className="container">
       <h1 className="heading">Olympics Data from JSON</h1>
-      <div className="category">
-        <button className="names" onClick={() => setShowNames(!showNames)}>Names</button>
-        {showNames && (
-          <ul>
-            {names.map((name, index) => (
-              <li key={index}>{name}</li>
-            ))}
-          </ul>
-        )}
+      <div className="button-container">
+        <button className="header-button-names" onClick={() => setShowNames(!showNames)}>Names</button>
+        <button className="header-button-year" onClick={() => setShowYears(!showYears)}>Years</button>
+        <button className="header-button-medals" onClick={() => setShowMedals(!showMedals)}>Medals</button>
       </div>
-      <div className="category">
-        <button className="years" onClick={() => setShowYears(!showYears)}>Years</button>
-        {showYears && (
-          <ul>
-            {years.map((year, index) => (
-              <li key={index}>{year}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <div className="category">
-        <button className="medals" onClick={() => setShowMedals(!showMedals)}>Medals</button>
-        {showMedals && (
-          <ul>
-            {medals.map((medal, index) => (
-              <li key={index}>{medal}</li>
-            ))}
-          </ul>
-        )}
-      </div>
+      <table className="data-table">
+        <thead>
+          <tr>
+            {showNames && <th>Names</th>}
+            {showYears && <th>Years</th>}
+            {showMedals && <th>Medals</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, index) => (
+            <tr key={index}>
+              {showNames && <td>{item.Name}</td>}
+              {showYears && <td>{item.Year}</td>}
+              {showMedals && <td>{item.Medal}</td>}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
