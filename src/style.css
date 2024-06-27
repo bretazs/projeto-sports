@@ -1,0 +1,45 @@
+.container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  .heading {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+  }
+  
+  .category {
+    margin-top: 30px;
+    display: inline-block;
+    padding-inline-start: 20px;
+    margin-left: 400px;
+
+  }
+  
+  .category h2 {
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .category ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .category li {
+    margin-bottom: 5px;
+  }
+  
+  .names {
+    color: blue;
+  }
+  
+  .years {
+    color: green;
+  }
+  
+  .medals {
+    color: red;
+  }
+  
