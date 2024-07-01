@@ -6,6 +6,8 @@ function App() {
   const [showNames, setShowNames] = useState(false); 
   const [showYears, setShowYears] = useState(false); 
   const [showMedals, setShowMedals] = useState(false); 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     fetch('./gold_medalists.json')
@@ -17,6 +19,29 @@ function App() {
         console.error('Erro ao carregar os dados: ', error);
       });
   }, []);
+
+  const handleClick = (event, pageNumber) => {
+    event.preventDefault();
+    setCurrentPage(pageNumber);
+  };
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(data.length / itemsPerPage); i++) {
+      pageNumbers.push(
+        <li key={i}>
+          <a href="!#" onClick={(event) => handleClick(event, i)} className={i === currentPage ? 'active' : ''}>
+            {i}
+          </a>
+        </li>
+      );
+    }
+    return pageNumbers;
+  };
 
   return (
     <div className="container">
@@ -35,7 +60,7 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {data.map((item, index) => (
+          {currentItems.map((item, index) => (
             <tr key={index}>
               {showNames && <td>{item.Name}</td>}
               {showYears && <td>{item.Year}</td>}
@@ -44,6 +69,9 @@ function App() {
           ))}
         </tbody>
       </table>
+      <ul className="pagination">
+        {renderPageNumbers()}
+      </ul>
     </div>
   );
 }
